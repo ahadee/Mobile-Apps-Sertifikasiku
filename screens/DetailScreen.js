@@ -1,15 +1,12 @@
 import React from 'react';
 import {View, Text, Button} from 'react-native';
-// import WrappedCard from '../components/WrappedCard';
-import { WebView } from 'react-native-webview';
-
+import WrappedCard from '../components/WrappedCard';
 
 const DetailScreen = () => {
   return (
-    // <View>
-    //   <WrappedCard />
-      <WebView source={{ uri: 'https://sertifikasiku.com/' }} />
-    // </View>
+    <View>
+      <WrappedCard />
+    </View>
   );
 };
 

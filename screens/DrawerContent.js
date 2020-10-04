@@ -15,6 +15,10 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {color} from 'react-native-reanimated';
 
 export function DrawerContent(props) {
+    const [isDarkTheme, setIsDarkTheme] = React.useState(false)
+    const toggleTheme = () => {
+        setIsDarkTheme(!isDarkTheme)
+    }
   return (
     <View style={{flex: 1}}>
       <DrawerContentScrollView {...props}>
@@ -30,7 +34,9 @@ export function DrawerContent(props) {
               />
               <View style={{marginLeft: 15, flexDirection: 'column'}}>
                 <Title style={styles.title}>Joko Widodo</Title>
-                <Caption style={styles.caption}>jokowi@sertifikasiku.com</Caption>
+                <Caption style={styles.caption}>
+                  jokowi@sertifikasiku.com
+                </Caption>
               </View>
             </View>
             <View style={styles.row}>
@@ -125,11 +131,31 @@ export function DrawerContent(props) {
       <Drawer.Section style={styles.bottomDrawerSection}>
         <DrawerItem
           icon={({color, size}) => (
+            <Icon name="sign-in-alt" color={color} size={size} />
+          )}
+          label="Sign In"
+          onPress={() => {props.navigation.navigate('Login')}}
+        />
+        <DrawerItem
+          icon={({color, size}) => (
             <Icon name="sign-out-alt" color={color} size={size} />
           )}
           label="Sign Out"
           onPress={() => {}}
         />
+      </Drawer.Section>
+      <Drawer.Section>
+        <TouchableRipple
+          onPress={() => {
+            toggleTheme();
+          }}>
+          <View style={styles.preference}>
+            <Text>Dark Theme</Text>
+            <View>
+              <Switch value={isDarkTheme} />
+            </View>
+          </View>
+        </TouchableRipple>
       </Drawer.Section>
     </View>
   );
@@ -176,7 +202,7 @@ const styles = StyleSheet.create({
   preference: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingVertical: 12,
+    paddingVertical: 5,
     paddingHorizontal: 16,
   },
 });

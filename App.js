@@ -11,20 +11,21 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import MainTabScreen from './screens/MainTabScreen';
 import {DrawerContent} from './screens/DrawerContent'
-import { WebView } from 'react-native-webview';
-
+import Login from './screens/LoginScreen'
+import Register from './screens/RegisterScreen'
 
 const Drawer = createDrawerNavigator();
 
 const App = () => {
   return (
-    // <NavigationContainer>
-    //   <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />} >
-    //     <Drawer.Screen name="Home" component={MainTabScreen} />
-    //     {/* <Drawer.Screen name="Details" component={DetailsStackScreen} /> */}
-    //   </Drawer.Navigator>
-    // </NavigationContainer>
-    <WebView source={{ uri: 'https://sertifikasiku.com/' }} />
+    <NavigationContainer>
+      <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />} >
+        <Drawer.Screen name="Home" component={MainTabScreen} />
+        <Drawer.Screen name="Login" component={Login} /> 
+        <Drawer.Screen name="Register" component={Register} /> 
+      </Drawer.Navigator>
+    </NavigationContainer>
+    // <WebView source={{ uri: 'https://sertifikasiku.com/' }} />
 
   );
 };
